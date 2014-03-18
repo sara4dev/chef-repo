@@ -8,7 +8,7 @@
 #
 
 remote_file "deploy_war" do
-  source "https://s3-us-west-1.amazonaws.com/card-provisioning-packages/cardProvisioning_v1.war"
-  path "/var/lib/tomcat7/webapps/cardProvisioning_v1.war"
+  source "https://s3-us-west-1.amazonaws.com/card-provisioning-packages/cardProvisioning#v1.war"
+  path "/var/lib/tomcat7/webapps/cardProvisioning#v1.war"
   notifies :restart, 'service[tomcat]'
 end
