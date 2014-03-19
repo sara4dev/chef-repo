@@ -12,3 +12,14 @@ remote_file "deploy_war" do
   path "/var/lib/tomcat7/webapps/cardProvisioning#v1.war"
   notifies :restart, 'service[tomcat]'
 end
+
+template "/var/lib/tomcat7/webapps/cardProvisioning#v1/WEB-INF/classes/configInventoryCardOrder.properties" do
+  source "configInventoryCardOrder.properties.erb"
+  mode 0440
+  owner "root"
+  group "root"
+  variables({
+     :cardProvisioning_sqs => node[:cardProvisioning][:sqs],
+     :cardProvisioning_rds => node[:cardProvisioning][:rds]
+  })
+end

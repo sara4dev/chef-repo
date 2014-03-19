@@ -1,0 +1,17 @@
+{
+  "name": "cardprovisioning",
+  "description": "Card Provisioning REST API Server",
+  "tomcat": {
+    "base_version": "7"
+  },
+  "java": {
+    "install_flavor": "oracle",
+    "oracle": {
+      "accept_oracle_download_terms": "true"
+    }
+  },
+  "run_list": [
+    "recipe[java]",
+    "recipe[tomcat]"
+  ]
+}

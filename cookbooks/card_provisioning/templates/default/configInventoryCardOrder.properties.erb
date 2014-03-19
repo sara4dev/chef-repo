@@ -1,0 +1,47 @@
+jdbc.driverClass=com.mysql.jdbc.Driver
+jdbc.url=<% @cardProvisioning_rds %>
+jdbc.username=bhn
+jdbc.password=90uIMqiYaFnv
+jpa.database=MYSQL
+
+jdbc.acquireIncrement=2
+
+# vvvvv fail fast for testing vvvvv
+jdbc.acquireRetryAttempts=1
+jdbc.breakAfterAcquireFailure=true
+# ^^^^^ fail fast for testing ^^^^^
+
+jdbc.initialPoolSize=0
+jdbc.minPoolSize=0
+jdbc.maxPoolSize=30
+jdbc.maxIdleTime=60
+
+#--------------------------advanced settings ------------------
+jdbc.idleConnectionTestPeriod=200
+jdbc.maxStatements=0
+jdbc.numHelperThreads=3
+jdbc.preferredTestQuery=SELECT 1
+# most costly checks if value is true
+jdbc.testConnectionOnCheckout=false
+
+jpa.showSql=true
+
+#--------------------------sqs queue ------------------
+                   
+aws.accessId={ENCR}3YPQZRQLFV6SN0RHHGC5G811535GZ14A36NDQ40
+aws.accessKey={ENCR}ST070G59NHJ280Z4PBR0LF5DT9FT4RMG64PWYZ04GTK0TB8SRHVTL3X9DC3PJHRM2Y9LA1C06TDVA
+aws.accessEndpoint=sqs.us-west-1.amazonaws.com
+aws.queueUrl= <% @cardProvisioning_sqs %>
+
+#--------------------------performance monitoring settings ------------------
+performace.monitor.pointcut.expression=execution(* com.bhn.service..*.*(..))
+#performace.monitor.pointcut.expression=execution(* dummy())
+
+#-------------------------- encryption impl class ------------------
+encryption.mgmt.service.impl=com.bhn.service.encryption.JavaEncryptionManagementService
+#encryption.mgmt.service.impl=com.bhn.service.encryption.IngrianEncryptionManagmentService
+
+creatorId=http://10.180.137.39:8081/inventoryCardOrderManagement/v1/inventoryCardOrder/
+updaterId=http://10.180.137.39:8081/inventoryCardOrderManagement/v1/inventoryCardOrder/
+com.bhn.service.inventoryCardOrder.inventoryCardOrder.entityId=http://10.180.137.39:8081/inventoryCardOrderManagement/v1/inventoryCardOrder/
+com.bhn.service.inventoryCardOrder.inventoryCardOrderSummary.entityId=http://10.180.137.39:8081/inventoryCardOrderManagement/v1/inventoryCardOrder/
