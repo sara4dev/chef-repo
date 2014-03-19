@@ -1,5 +1,5 @@
 jdbc.driverClass=com.mysql.jdbc.Driver
-jdbc.url=<% @cardProvisioning_rds %>
+jdbc.url=<%= @cardProvisioning_rds %>
 jdbc.username=bhn
 jdbc.password=90uIMqiYaFnv
 jpa.database=MYSQL
@@ -31,7 +31,7 @@ jpa.showSql=true
 aws.accessId={ENCR}3YPQZRQLFV6SN0RHHGC5G811535GZ14A36NDQ40
 aws.accessKey={ENCR}ST070G59NHJ280Z4PBR0LF5DT9FT4RMG64PWYZ04GTK0TB8SRHVTL3X9DC3PJHRM2Y9LA1C06TDVA
 aws.accessEndpoint=sqs.us-west-1.amazonaws.com
-aws.queueUrl= <% @cardProvisioning_sqs %>
+aws.queueUrl= <%= @cardProvisioning_sqs %>
 
 #--------------------------performance monitoring settings ------------------
 performace.monitor.pointcut.expression=execution(* com.bhn.service..*.*(..))
