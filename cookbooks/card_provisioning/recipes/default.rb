@@ -23,3 +23,23 @@ template "/var/lib/tomcat7/webapps/cardProvisioning#v1/WEB-INF/classes/configInv
      :cardProvisioning_rds => node[:cardProvisioning][:rds]
   })
 end
+
+service 'tomcat' do
+  case node['platform']
+  when 'centos', 'redhat', 'fedora', 'amazon'
+    service_name "tomcat#{node['tomcat']['base_version']}"
+    supports :restart => true, :status => true
+  when 'debian', 'ubuntu'
+    service_name "tomcat#{node['tomcat']['base_version']}"
+    supports :restart => true, :reload => false, :status => true
+  when 'smartos'
+    service_name 'tomcat'
+    supports :restart => false, :reload => false, :status => true
+  else
+    service_name "tomcat#{node['tomcat']['base_version']}"
+  end
+  action [:start, :enable]
+  notifies :run, 'execute[wait for tomcat]', :immediately
+  retries 4
+  retry_delay 30
+end
