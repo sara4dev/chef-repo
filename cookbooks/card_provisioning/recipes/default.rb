@@ -6,7 +6,6 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-include_recipe 'tomcat'
 
 remote_file "deploy_war" do
   source "https://s3-us-west-1.amazonaws.com/card-provisioning-packages/cardProvisioning%23v1.war"
