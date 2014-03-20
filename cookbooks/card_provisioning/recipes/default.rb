@@ -6,18 +6,19 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+include_recipe "tomcat"
 
 remote_file "deploy_war" do
   source "https://s3-us-west-1.amazonaws.com/card-provisioning-packages/cardProvisioning%23v1.war"
   path "/var/lib/tomcat7/webapps/cardProvisioning#v1.war"
-  #notifies :restart, 'service[tomcat]'
+  notifies :restart, 'service[tomcat]'
 end
 
 template "/var/lib/tomcat7/webapps/cardProvisioning#v1/WEB-INF/classes/configInventoryCardOrder.properties" do
   source "configInventoryCardOrder.properties.erb"
-  mode 0440
-  owner "root"
-  group "root"
+  mode 0644
+  owner "tomcat7"
+  group "tomcat7"
   variables({
      :cardProvisioning_sqs => node[:cardProvisioning][:sqs],
      :cardProvisioning_rds => node[:cardProvisioning][:rds]
