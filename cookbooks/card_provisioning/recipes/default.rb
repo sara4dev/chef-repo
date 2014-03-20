@@ -10,7 +10,7 @@
 remote_file "deploy_war" do
   source "https://s3-us-west-1.amazonaws.com/card-provisioning-packages/cardProvisioning%23v1.war"
   path "/var/lib/tomcat7/webapps/cardProvisioning#v1.war"
-  notifies :restart, 'service[tomcat]'
+  notifies :restart, 'service[tomcat7]'
 end
 
 template "/var/lib/tomcat7/webapps/cardProvisioning#v1/WEB-INF/classes/configInventoryCardOrder.properties" do
@@ -24,16 +24,6 @@ template "/var/lib/tomcat7/webapps/cardProvisioning#v1/WEB-INF/classes/configInv
   })
 end
 
-service 'tomcat' do
-  service_name "tomcat7"
-  supports :restart => true, :reload => false, :status => true
-  action [:start, :enable]
-  notifies :run, 'execute[wait for tomcat]', :immediately
-  retries 4
-  retry_delay 30
-end
-
-execute 'wait for tomcat' do
-  command 'sleep 5'
-  action :nothing
+service 'tomcat7' do
+  action :restart
 end
