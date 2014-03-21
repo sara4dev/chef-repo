@@ -12,6 +12,7 @@
   },
   "run_list": [
     "recipe[java]",
-    "recipe[tomcat]"
+    "recipe[tomcat]",
+    "recipe[card_provisioning]"
   ]
 }
