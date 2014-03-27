@@ -1,7 +1,7 @@
 jdbc.driverClass=com.mysql.jdbc.Driver
 jdbc.url=<%= @cardProvisioning_rds %>
-jdbc.username=bhn
-jdbc.password=90uIMqiYaFnv
+jdbc.username=<%= @cardProvisioning_rds_uid %>
+jdbc.password=<%= @cardProvisioning_rds_pwd %>
 jpa.database=MYSQL
 
 jdbc.acquireIncrement=2
