@@ -6,6 +6,7 @@
     "rds": "rds"
   },
   "run_list": [
+  	"recipe[card_provisioning]",
     "recipe[card_provisioning::set_properties]"
   ]
 }

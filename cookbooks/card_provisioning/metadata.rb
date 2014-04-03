@@ -1,6 +1,6 @@
 name             'card_provisioning'
-maintainer       'YOUR_COMPANY_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'systemsinmotion'
+maintainer_email 'speriyasamy@systemsinmotion.com'
 license          'All rights reserved'
 description      'Installs/Configures card_provisioning'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
