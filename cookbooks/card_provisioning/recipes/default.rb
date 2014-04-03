@@ -12,3 +12,7 @@ remote_file "deploy_war" do
   path "/var/lib/tomcat7/webapps/cardProvisioning#v1.war"
   notifies :restart, 'service[tomcat]'
 end
+
+service 'tomcat7' do
+  action :restart
+end

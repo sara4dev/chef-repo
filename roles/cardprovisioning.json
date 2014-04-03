@@ -1,12 +1,7 @@
 {
   "name": "cardprovisioning",
   "description": "Card Provisioning War deployment",
-  "cardProvisioning": {
-    "sqs": "sqs",
-    "rds": "rds"
-  },
   "run_list": [
-  	"recipe[card_provisioning]",
-    "recipe[card_provisioning::set_properties]"
+  	"recipe[card_provisioning]"
   ]
 }
