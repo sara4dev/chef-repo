@@ -1,0 +1,7 @@
+{
+  "name": "cardprovisioning",
+  "description": "Card Generation War deployment",
+  "run_list": [
+  	"recipe[card_generation]"
+  ]
+}
